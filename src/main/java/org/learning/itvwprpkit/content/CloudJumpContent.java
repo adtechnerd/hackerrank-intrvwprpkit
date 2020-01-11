@@ -1,6 +1,6 @@
 package org.learning.itvwprpkit.content;
 
-public class CloudJump implements Content {
+public class CloudJumpContent implements Content {
     private int count;
     private int[] cloudNum;
 

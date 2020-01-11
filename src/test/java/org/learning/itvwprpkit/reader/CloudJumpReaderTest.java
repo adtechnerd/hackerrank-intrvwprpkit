@@ -1,7 +1,7 @@
 package org.learning.itvwprpkit.reader;
 
 import org.junit.Test;
-import org.learning.itvwprpkit.content.CloudJump;
+import org.learning.itvwprpkit.content.CloudJumpContent;
 
 import java.io.File;
 
@@ -13,7 +13,10 @@ public class CloudJumpReaderTest {
     public void jumpReader() {
         File file = new File("src/test/resources/cloudjump.txt");
         CloudJumpReader reader = new CloudJumpReader();
-        CloudJump cloudJump = reader.read(file);
+        CloudJumpContent cloudJump = reader.read(file);
         assertEquals(cloudJump.getCount(), 7);
+        int[] cloudNum = cloudJump.getCloudNum();
+        assertEquals(cloudNum.length, 7);
+        assertEquals(cloudNum[2], 1);
     }
 }
