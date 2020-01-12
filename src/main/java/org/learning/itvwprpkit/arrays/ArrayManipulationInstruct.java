@@ -18,7 +18,7 @@ public class ArrayManipulationInstruct {
     private long processInput(ArrayManipulation manipulation) {
         int max = 0;
         int size = manipulation.getN();
-        long[] arr = new long[size];
+        long[] arr = new long[size+1] ;
         initialize(size, arr);
         InstructionsArrManipulation[] instructions = manipulation.getInstructions();
         int instCount = manipulation.getInstCount();
@@ -26,18 +26,24 @@ public class ArrayManipulationInstruct {
             int start = instructions[i].getStart();
             int end = instructions[i].getEnd();
             int adder = instructions[i].getAdd();
-            for (int j = start -1 ; j < end ; j++) {
-                arr[j] = arr[j] + adder;
-            }
+            arr[start - 1] = arr[start - 1] + adder;
+            arr[end] = arr[end] -adder;
+            iterate(arr);
         }
         return getMax(arr);
     }
 
-    private long getMax(long[] arr) {
-        long max = Long.MIN_VALUE;
+    private void iterate(long[] arr) {
         for (int i = 0; i < arr.length; i++) {
-            if(arr[i] > max) {
-                max = arr[i];
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+    }
+    private long getMax(long[] arr) {
+        long max = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if(arr[i] + max > max) {
+                max += arr[i];
             }
         }
         return max;
