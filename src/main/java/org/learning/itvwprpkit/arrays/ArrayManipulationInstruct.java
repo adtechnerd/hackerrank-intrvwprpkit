@@ -28,7 +28,7 @@ public class ArrayManipulationInstruct {
             int adder = instructions[i].getAdd();
             arr[start - 1] = arr[start - 1] + adder;
             arr[end] = arr[end] -adder;
-            iterate(arr);
+//            iterate(arr);
         }
         return getMax(arr);
     }
